@@ -8,7 +8,7 @@
 - 💡 **Ideating a scalable business plan**
 
 ## Intent and Subagents Flow Diagram:
-<img src="https://github.com/CMPN-CODECELL/Syrus2025_FinTechinStartups_TeamINSPIRE/blob/main/Screenshot%202025-03-28%20230214.png" alt="Alt text" width="300">
+<img src="https://github.com/CMPN-CODECELL/Syrus2025_FinTechinStartups_TeamINSPIRE/blob/main/Screenshot%202025-03-28%20230214.png" alt="Alt text" width="1000">
 
 
 ## Work after feedback 
