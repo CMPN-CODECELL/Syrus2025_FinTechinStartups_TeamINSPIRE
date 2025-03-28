@@ -1,0 +1,24 @@
+{
+  "_id": "9b8520cc-0f65-455d-a695-fa3b14740a45",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "suggest-payment-schedules-0062",
+  "name": "Workflow for Suggest Payment Schedules",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "5168b788-1d83-42f0-a371-52bee3368273",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "5168b788-1d83-42f0-a371-52bee3368273",
+      "transitions": [],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

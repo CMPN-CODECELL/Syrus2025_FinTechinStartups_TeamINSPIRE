@@ -1,0 +1,39 @@
+{
+  "_id": "3ae4caa7-63f8-4438-a9aa-4fbbf44afb16",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "cash-flow-analyzer-5230",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "track-income-and-expenses-5230",
+      "name": "Track Income and Expenses",
+      "description": "Monitors and records all income and expenses to maintain accurate financial records.",
+      "examples": [
+        "Track all expenses for this month.",
+        "Record the income from the latest sales.",
+        "Monitor the cash flow for the last quarter."
+      ],
+      "flowType": "Workflow",
+      "workflowId": "13ae3ab1-a89f-4dbd-9b81-5428d54e8938"
+    },
+    {
+      "_id": "generate-cash-flow-insights-5230",
+      "name": "Generate Cash Flow Insights",
+      "description": "Analyzes cash flow data to provide insights and trends.",
+      "examples": [
+        "What are the cash flow trends for this year?",
+        "Generate a report on cash flow insights.",
+        "Provide insights on our current cash flow."
+      ],
+      "flowType": "Workflow",
+      "workflowId": "2c679b42-a677-4e9f-9d65-3924257319b3"
+    }
+  ],
+  "name": "Cash Flow Analyzer",
+  "primaryWorkflowId": "f6cb9966-ec02-4fae-912f-bf7ea527242a",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "scope": "Tracks income and expenses, providing insights on cash flow trends to help manage financial health.",
+  "status": "Active"
+}

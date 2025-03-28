@@ -1,0 +1,17 @@
+{
+  "_id": "9b650622-8474-4a08-a8e5-a6c96232142c",
+  "name": "transaction_db",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "metadataExtractionWorkflowId": "",
+  "filterFields": [],
+  "enablePiiMasking": false,
+  "chunkingState": {
+    "dataSources": [
+      {
+        "dataSourceId": "6082debf-c329-4800-b0ea-008196020a00",
+        "state": "Processed"
+      }
+    ]
+  },
+  "status": "Active"
+}

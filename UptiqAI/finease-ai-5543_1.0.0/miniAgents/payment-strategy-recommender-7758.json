@@ -1,0 +1,39 @@
+{
+  "_id": "b82f0346-eb56-4149-aeb8-d881aba87121",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "payment-strategy-recommender-7758",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "suggest-payment-schedules-7758",
+      "name": "Suggest Payment Schedules",
+      "description": "Recommends the best payment schedules to optimize cash flow.",
+      "examples": [
+        "What is the optimal payment schedule for this month?",
+        "Suggest a payment plan based on our finances.",
+        "How should we schedule our payments?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "9b8520cc-0f65-455d-a695-fa3b14740a45"
+    },
+    {
+      "_id": "advise-on-payment-timing-7758",
+      "name": "Advise on Payment Timing",
+      "description": "Provides advice on when to delay or fast-track payments based on current financial status.",
+      "examples": [
+        "Should we delay this payment?",
+        "Is it advisable to fast-track this payment?",
+        "When should we make this payment?"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "4adc5005-d3dd-4753-a504-3580fc95fe6d"
+    }
+  ],
+  "name": "Payment Strategy Recommender",
+  "primaryWorkflowId": "fe5b98fc-aa1c-4c29-8787-9b876a1bf513",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "scope": "Suggests optimal payment schedules based on financial health and advises on when to delay or fast-track payments.",
+  "status": "Active"
+}

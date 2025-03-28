@@ -1,0 +1,31 @@
+Transaction_ID,Client_Name,Amount,Due_Date,Status,Contact_Email,Contact_Phone
+TRN101,T&G PVT LTD,15000,2025-03-10,Overdue,2022.tejas.gadge@ves.ac.in,+919876543210
+TRN102,Champas LTD,20000,2025-03-15,Pending,2022.anisha.shankar@ves.ac.in,+918765432109
+TRN103,LMN Pvt. Ltd,25000,2025-03-20,Pending,tejasgadge903@gmail.com,+917654321098
+TRN104,DEF Industries,30000,2025-03-05,Overdue,2022.deepak.kumbhar@ves.ac.in,+916543210987
+TRN105,JKL Enterprises,18000,2025-04-01,Paid,2022.ganesh.shelar@ves.ac.in,+915432109876
+TRN106,MNO Traders,22000,2025-04-10,Pending,2022.vedant.mhatre@ves.ac.in,+914321098765
+TRN107,UVW Solutions,16000,2025-03-25,Pending,uvw_solutions@email.com,+913210987654
+TRN108,PQR Tech,28000,2025-02-28,Overdue,pqr_tech@email.com,+912109876543
+TRN109,STU Pvt. Ltd,12000,2025-04-15,Paid,stu_pvt@email.com,+911098765432
+TRN110,GHI Group,14000,2025-03-30,Pending,ghi_group@email.com,+910987654321
+TRN111,Alpha Corp,17500,2025-03-12,Overdue,alpha_corp@email.com,+919112233445
+TRN112,Beta Industries,19500,2025-03-20,Pending,beta_industries@email.com,+919223344556
+TRN113,Gamma Solutions,22500,2025-04-05,Paid,gamma_solutions@email.com,+919334455667
+TRN114,Delta Ltd,31000,2025-03-08,Overdue,delta_ltd@email.com,+919445566778
+TRN115,Epsilon Pvt. Ltd,13500,2025-03-22,Pending,epsilon_pvt@email.com,+919556677889
+TRN116,Zeta Group,18500,2025-04-15,Paid,zeta_group@email.com,+919667788990
+TRN117,Eta Enterprises,26500,2025-03-28,Pending,eta_enterprises@email.com,+919778899001
+TRN118,Theta Technologies,29000,2025-03-05,Overdue,theta_tech@email.com,+919889900112
+TRN119,Iota Solutions,21500,2025-03-18,Pending,iota_solutions@email.com,+919990011223
+TRN120,Kappa Traders,19500,2025-03-25,Pending,kappa_traders@email.com,+919101122334
+TRN121,Lambda Corp,28500,2025-03-30,Pending,lambda_corp@email.com,+919212233445
+TRN122,Mu Ltd,30500,2025-03-10,Overdue,mu_ltd@email.com,+919323344556
+TRN123,Nu Pvt. Ltd,24500,2025-04-02,Paid,nu_pvt@email.com,+919434455667
+TRN124,Xi Solutions,16500,2025-03-15,Pending,xi_solutions@email.com,+919545566778
+TRN125,Omicron Group,27000,2025-03-22,Pending,omicron_group@email.com,+919656677889
+TRN126,Pi Industries,32000,2025-03-05,Overdue,pi_industries@email.com,+919767788990
+TRN127,Rho Enterprises,14000,2025-03-12,Pending,rho_enterprises@email.com,+919878899001
+TRN128,Sigma Technologies,29000,2025-03-08,Overdue,sigma_tech@email.com,+919989900112
+TRN129,Tau Traders,21500,2025-03-20,Pending,tau_traders@email.com,+919090011223
+TRN130,Upsilon Corp,27500,2025-04-01,Paid,upsilon_corp@email.com,+919101122334

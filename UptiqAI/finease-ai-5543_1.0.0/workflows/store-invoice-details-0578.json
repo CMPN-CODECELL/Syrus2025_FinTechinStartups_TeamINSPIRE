@@ -1,0 +1,24 @@
+{
+  "_id": "f8b55a8d-cf8b-4a8b-bca7-011ddfd29838",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "store-invoice-details-0578",
+  "name": "Workflow for Store Invoice Details",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "81d5bfff-1518-43c6-aafb-edd85b30fd88",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "81d5bfff-1518-43c6-aafb-edd85b30fd88",
+      "transitions": [],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

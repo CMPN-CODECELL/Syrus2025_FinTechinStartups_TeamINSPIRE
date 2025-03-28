@@ -1,0 +1,226 @@
+{
+  "_id": "8c848d42-149c-49d4-92dc-0edc3410d0a3",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "identify-overdue-payments-2876",
+  "name": "Workflow for Identify Overdue Payments",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "1743160465710",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "1743160457627",
+      "type": "VectorSearch",
+      "config": {
+        "name": "Vector search",
+        "description": "Vector search",
+        "vectorStoreId": "61a4db36-fe62-4931-a9d4-ab33692fa5fa",
+        "query": "Analyse the user input $agent.query and give me the desired output",
+        "k": 5
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743160457627-1743160482387",
+          "nextTask": "1743160482387"
+        }
+      ]
+    },
+    {
+      "_id": "1743160465710",
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Show data",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p>payments identier processing....</p>",
+        "rawText": "payments identier processing...."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743160465710-1743160457627",
+          "nextTask": "1743160457627"
+        }
+      ]
+    },
+    {
+      "_id": "1743160482387",
+      "type": "Prompt",
+      "config": {
+        "name": "Prompt",
+        "description": "Prompt for LLM",
+        "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "text",
+        "query": "$input.retrievedDocs",
+        "systemPrompt": "Analyse the vector db output and show in proper format.",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743160482387-1743160489104",
+          "nextTask": "1743160489104"
+        }
+      ]
+    },
+    {
+      "_id": "1743160489104",
+      "type": "Display",
+      "config": {
+        "name": "Display (1)",
+        "description": "Show data",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"input.content\">$input.content</span> </p>",
+        "rawText": "$input.content"
+      },
+      "transitions": []
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": -778,
+      "y": -278,
+      "zoom": 1
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 385,
+          "y": 396
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 291,
+          "height": 136
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743160457627",
+        "type": "VectorSearch",
+        "position": {
+          "x": 890,
+          "y": 429
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743160465710",
+        "type": "Display",
+        "position": {
+          "x": 647,
+          "y": 599
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743160482387",
+        "type": "Prompt",
+        "position": {
+          "x": 1320,
+          "y": 480
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false
+      },
+      {
+        "id": "1743160489104",
+        "type": "Display",
+        "position": {
+          "x": 1785,
+          "y": 510
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743160465710",
+        "source": "0",
+        "target": "1743160465710",
+        "type": "Start",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743160465710-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743160465710-1743160457627",
+        "source": "1743160465710",
+        "target": "1743160457627",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743160465710-source-1",
+        "targetHandle": "1743160457627-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743160457627-1743160482387",
+        "source": "1743160457627",
+        "target": "1743160482387",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743160457627-source-1",
+        "targetHandle": "1743160482387-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743160482387-1743160489104",
+        "source": "1743160482387",
+        "target": "1743160489104",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743160482387-source-1",
+        "targetHandle": "1743160489104-target-1",
+        "selected": false
+      }
+    ]
+  }
+}

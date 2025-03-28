@@ -1,0 +1,24 @@
+{
+  "_id": "61a4db36-fe62-4931-a9d4-ab33692fa5fa",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "name": "transaction_vector",
+  "source": "Internal",
+  "type": "MongoDB",
+  "distanceStrategy": "cosine",
+  "embedding": {
+    "model": "text-embedding-3-large",
+    "provider": "OpenAI",
+    "dimensions": 3072
+  },
+  "storeName": "vector-store-gbfdbmws4qkl",
+  "dataStoreState": {
+    "dataStoreId": "9b650622-8474-4a08-a8e5-a6c96232142c",
+    "dataSources": [
+      {
+        "dataSourceId": "6082debf-c329-4800-b0ea-008196020a00",
+        "state": "Processed"
+      }
+    ]
+  },
+  "status": "Active"
+}
