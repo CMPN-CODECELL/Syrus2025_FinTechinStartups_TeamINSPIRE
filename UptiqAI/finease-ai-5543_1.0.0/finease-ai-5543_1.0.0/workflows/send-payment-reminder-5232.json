@@ -1,0 +1,406 @@
+{
+  "_id": "6a0a837d-c01a-4ca5-b6ab-742b2590edf2",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "send-payment-reminder-5232",
+  "name": "Workflow for Send Payment Reminder",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "e27d4f2d-5385-4a23-9821-a099765c9482",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "e27d4f2d-5385-4a23-9821-a099765c9482",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "e27d4f2d-5385-4a23-9821-a099765c9482-1743170341492",
+          "nextTask": "1743170341492"
+        }
+      ]
+    },
+    {
+      "_id": "1743170341492",
+      "type": "VectorSearch",
+      "config": {
+        "description": "Vector search",
+        "name": "Vector search",
+        "vectorStoreId": "61a4db36-fe62-4931-a9d4-ab33692fa5fa",
+        "query": "Analyse the user input $agent.query and give me just the array of respective email id's as output",
+        "k": 10
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743170341492-1743170474043",
+          "nextTask": "1743170474043"
+        },
+        {
+          "name": "Default",
+          "_id": "1743170341492-1743174452289",
+          "nextTask": "1743174452289"
+        }
+      ]
+    },
+    {
+      "_id": "1743170474043",
+      "type": "Prompt",
+      "config": {
+        "description": "Prompt for LLM",
+        "name": "Prompt",
+        "modelId": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "text",
+        "query": "$input.retrievedDocs",
+        "systemPrompt": "Analyze the vector database output and give me just a comma seperated list of email addresses of the recipients id's as output.",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743170474043-1743170530741",
+          "nextTask": "1743170530741"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "emailList",
+          "referencePath": "$output.content"
+        }
+      ]
+    },
+    {
+      "_id": "1743170530741",
+      "type": "Notification",
+      "config": {
+        "description": "Notify user",
+        "name": "Notify",
+        "mode": "Email",
+        "targetAudience": "",
+        "message": "",
+        "to": [
+          "$agent.emailList"
+        ],
+        "subject": "From FinEase",
+        "body": "<p>Respected Sir/Madam,</p><p></p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.EMailContent\">$agent.EMailContent</span> </p><p></p><p>Thankyou.</p><p></p><p><strong>Best Regrads,</strong></p><p>Team FinEase.</p><p></p>",
+        "cc": [
+          "2022.tejas.gadge@ves.ac.in"
+        ],
+        "button": {},
+        "heading": "Test Mail"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743170530741-1743170611040",
+          "nextTask": "1743170611040"
+        }
+      ]
+    },
+    {
+      "_id": "1743170611040",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display (1)",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p>Mails send successfully</p>",
+        "rawText": "Mails send successfully"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743174452289",
+      "type": "Prompt",
+      "config": {
+        "description": "Prompt for LLM",
+        "name": "Prompt (1)",
+        "modelId": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "text",
+        "query": "$input.retrievedDocs",
+        "systemPrompt": "Analyze the vector db output and give me just a generalized mail for the same . Give me just the body for the mail in required format.\n",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743174452289-1743175677444",
+          "nextTask": "1743175677444"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "EMailContent",
+          "referencePath": "$output.content"
+        }
+      ]
+    },
+    {
+      "_id": "1743175677444",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display (1)",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"input.content\">$input.content</span> </p>",
+        "rawText": "$input.content"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743175677444-1743170530741",
+          "nextTask": "1743170530741"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": -1047.3002116584041,
+      "y": -108.80317143045562,
+      "zoom": 1.0734800141682772
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 360,
+          "y": 400
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 276,
+          "height": 136
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 698,
+          "y": 428
+        },
+        "type": "Display",
+        "id": "e27d4f2d-5385-4a23-9821-a099765c9482",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1081,
+          "y": 428
+        },
+        "type": "VectorSearch",
+        "id": "1743170341492",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1415,
+          "y": 428
+        },
+        "type": "Prompt",
+        "id": "1743170474043",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1780.539049350089,
+          "y": 428
+        },
+        "type": "Notification",
+        "id": "1743170530741",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 2115.2007641551154,
+          "y": 428
+        },
+        "type": "Display",
+        "id": "1743170611040",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1256.4057444055672,
+          "y": 237.59267676491305
+        },
+        "type": "Prompt",
+        "id": "1743174452289",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1741.260322281549,
+          "y": 229.2612532297275
+        },
+        "type": "Display",
+        "id": "1743175677444",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-0",
+        "type": "Start",
+        "source": "0",
+        "target": "e27d4f2d-5385-4a23-9821-a099765c9482",
+        "sourceHandle": "0-source-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "e27d4f2d-5385-4a23-9821-a099765c9482-1743170341492",
+        "source": "e27d4f2d-5385-4a23-9821-a099765c9482",
+        "target": "1743170341492",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "e27d4f2d-5385-4a23-9821-a099765c9482-source-1",
+        "targetHandle": "1743170341492-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743170341492-1743170474043",
+        "source": "1743170341492",
+        "target": "1743170474043",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743170341492-source-1",
+        "targetHandle": "1743170474043-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743170341492-1743174452289",
+        "source": "1743170341492",
+        "target": "1743174452289",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743170341492-source-2",
+        "targetHandle": "1743174452289-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743170474043-1743170530741",
+        "source": "1743170474043",
+        "target": "1743170530741",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743170474043-source-1",
+        "targetHandle": "1743170530741-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743170530741-1743170611040",
+        "source": "1743170530741",
+        "target": "1743170611040",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743170530741-source-1",
+        "targetHandle": "1743170611040-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743174452289-1743175677444",
+        "source": "1743174452289",
+        "target": "1743175677444",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743174452289-source-1",
+        "targetHandle": "1743175677444-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743175677444-1743170530741",
+        "source": "1743175677444",
+        "target": "1743170530741",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743175677444-source-3",
+        "targetHandle": "1743170530741-target-2",
+        "selected": false
+      }
+    ]
+  }
+}

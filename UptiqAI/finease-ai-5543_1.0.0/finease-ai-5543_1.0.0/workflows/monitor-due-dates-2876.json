@@ -1,0 +1,24 @@
+{
+  "_id": "6873333f-8fce-4b2b-9677-3681f94ccaef",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "monitor-due-dates-2876",
+  "name": "Workflow for Monitor Due Dates",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "ee7d10ba-c60f-4775-b6ed-28038eb25c81",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "ee7d10ba-c60f-4775-b6ed-28038eb25c81",
+      "transitions": [],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "Hi there! Intent $input.intent has been matched"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

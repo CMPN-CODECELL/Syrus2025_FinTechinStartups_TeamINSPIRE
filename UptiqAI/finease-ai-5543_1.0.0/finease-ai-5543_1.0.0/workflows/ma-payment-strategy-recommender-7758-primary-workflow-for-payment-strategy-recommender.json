@@ -1,0 +1,329 @@
+{
+  "_id": "fe5b98fc-aa1c-4c29-8787-9b876a1bf513",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "ma-payment-strategy-recommender-7758-primary-workflow-for-payment-strategy-recommender",
+  "isMiniAgentPrimaryWorkflow": true,
+  "name": "Primary Workflow for Payment Strategy Recommender",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "startTaskId": "52b8a4ce-6a34-45ae-abec-07d139da1668",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "52b8a4ce-6a34-45ae-abec-07d139da1668",
+      "type": "PassThrough",
+      "config": {
+        "name": "Pass Through",
+        "description": "Pass through the input to the output"
+      },
+      "transitions": [
+        {
+          "_id": "883ff001-dbd5-4271-9eda-fe687c060b89-52b8a4ce-6a34-45ae-abec-07d139da1668",
+          "nextTask": "883ff001-dbd5-4271-9eda-fe687c060b89",
+          "name": "If query doesnt exists",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "a5014a0c-3fd2-4995-8c59-95d0be563862-52b8a4ce-6a34-45ae-abec-07d139da1668",
+          "nextTask": "a5014a0c-3fd2-4995-8c59-95d0be563862",
+          "name": "If intents are already classified",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.intents"
+            },
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "52b8a4ce-6a34-45ae-abec-07d139da1668-24573abb-adab-44ca-8520-c6a248f93024",
+          "name": "If query exists",
+          "nextTask": "24573abb-adab-44ca-8520-c6a248f93024",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            },
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.intents"
+            }
+          ]
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$input.query"
+        },
+        {
+          "name": "conversationId",
+          "referencePath": "$input.conversationId"
+        }
+      ]
+    },
+    {
+      "_id": "883ff001-dbd5-4271-9eda-fe687c060b89",
+      "type": "Input",
+      "config": {
+        "name": "User Input",
+        "description": "Get user input",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "_id": "883ff001-dbd5-4271-9eda-fe687c060b89-24573abb-adab-44ca-8520-c6a248f93024",
+          "name": "Default",
+          "nextTask": "24573abb-adab-44ca-8520-c6a248f93024"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$output.userInput"
+        },
+        {
+          "name": "selfLoopMiniAgent",
+          "referencePath": "true"
+        }
+      ]
+    },
+    {
+      "_id": "24573abb-adab-44ca-8520-c6a248f93024",
+      "type": "Loader",
+      "config": {
+        "name": "Loader",
+        "description": "Display loader message",
+        "type": "loader",
+        "text": "Just a moment... identifying the best approach to assist you."
+      },
+      "transitions": [
+        {
+          "_id": "24573abb-adab-44ca-8520-c6a248f93024-28016100-5db4-4a1c-ad95-9e7b302480e0",
+          "name": "Default",
+          "nextTask": "28016100-5db4-4a1c-ad95-9e7b302480e0"
+        }
+      ]
+    },
+    {
+      "_id": "28016100-5db4-4a1c-ad95-9e7b302480e0",
+      "type": "IntentClassification",
+      "config": {
+        "name": "Intent Classification",
+        "description": "Classify the intent of the user message",
+        "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b",
+        "intents": [
+          {
+            "name": "Suggest Payment Schedules",
+            "description": "Recommends the best payment schedules to optimize cash flow.",
+            "examples": [
+              "What is the optimal payment schedule for this month?",
+              "Suggest a payment plan based on our finances.",
+              "How should we schedule our payments?"
+            ]
+          },
+          {
+            "name": "Advise on Payment Timing",
+            "description": "Provides advice on when to delay or fast-track payments based on current financial status.",
+            "examples": [
+              "Should we delay this payment?",
+              "Is it advisable to fast-track this payment?",
+              "When should we make this payment?"
+            ]
+          }
+        ],
+        "query": "$agent.query"
+      },
+      "transitions": [
+        {
+          "_id": "28016100-5db4-4a1c-ad95-9e7b302480e0-a5014a0c-3fd2-4995-8c59-95d0be563862",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "true"
+            }
+          ],
+          "nextTask": "a5014a0c-3fd2-4995-8c59-95d0be563862"
+        },
+        {
+          "_id": "28016100-5db4-4a1c-ad95-9e7b302480e0-c525a5ad-f16b-401e-9dd5-9c246ab587ef",
+          "name": "If No Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "false"
+            }
+          ],
+          "nextTask": "c525a5ad-f16b-401e-9dd5-9c246ab587ef"
+        }
+      ]
+    },
+    {
+      "_id": "a5014a0c-3fd2-4995-8c59-95d0be563862",
+      "type": "JSFunction",
+      "config": {
+        "name": "JS Function",
+        "description": "Execute JS function",
+        "code": "\nconst main = () => {\n    const currentExecutionId = _id;\n    const intents = agent?.icIntents?.[currentExecutionId] || input.intents;\n    const currentIndex = agent?.icLoopIndexes?.[currentExecutionId] || 0;\n    const currentIntent = intents[currentIndex] || {};\n    const { intent, task } = currentIntent;\n    const state = currentIndex === intents.length ? 'end' : 'continue'\n    const icLoopIndexes = { ...(agent?.icLoopIndexes || {}), [_id]: state === 'end' ? undefined : currentIndex + 1 };\n    const icIntents = { ...(agent?.icIntents || {}), [_id]: state === 'end' ? undefined : intents };\n    return { ...input, intent, state: currentIndex === intents.length ? 'end' : 'continue', icLoopIndexes, icIntents, query: task };\n};\n\nmain()\n"
+      },
+      "globalVariables": [
+        {
+          "referencePath": "$output.icLoopIndexes",
+          "name": "icLoopIndexes"
+        },
+        {
+          "referencePath": "$output.icIntents",
+          "name": "icIntents"
+        }
+      ],
+      "transitions": [
+        {
+          "_id": "a5014a0c-3fd2-4995-8c59-95d0be563862-3dd361e1-46c7-46e9-bce0-e48f997f0d0f",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intent",
+              "value": "Suggest Payment Schedules"
+            }
+          ],
+          "nextTask": "3dd361e1-46c7-46e9-bce0-e48f997f0d0f"
+        },
+        {
+          "_id": "a5014a0c-3fd2-4995-8c59-95d0be563862-303d60a2-7d39-42b8-9a49-5b8cef6e3b10",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intent",
+              "value": "Advise on Payment Timing"
+            }
+          ],
+          "nextTask": "303d60a2-7d39-42b8-9a49-5b8cef6e3b10"
+        },
+        {
+          "_id": "a5014a0c-3fd2-4995-8c59-95d0be563862-883ff001-dbd5-4271-9eda-fe687c060b89",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            },
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.state",
+              "value": "end"
+            }
+          ],
+          "nextTask": "883ff001-dbd5-4271-9eda-fe687c060b89"
+        }
+      ]
+    },
+    {
+      "_id": "3dd361e1-46c7-46e9-bce0-e48f997f0d0f",
+      "type": "Workflow",
+      "config": {
+        "name": "Intent - Suggest Payment Schedules",
+        "description": "Workflow for intent - Suggest Payment Schedules",
+        "workflowId": "9b8520cc-0f65-455d-a695-fa3b14740a45"
+      },
+      "transitions": [
+        {
+          "_id": "3dd361e1-46c7-46e9-bce0-e48f997f0d0f-a5014a0c-3fd2-4995-8c59-95d0be563862",
+          "name": "Mini agent execution completed",
+          "nextTask": "a5014a0c-3fd2-4995-8c59-95d0be563862"
+        }
+      ]
+    },
+    {
+      "_id": "303d60a2-7d39-42b8-9a49-5b8cef6e3b10",
+      "type": "Workflow",
+      "config": {
+        "name": "Intent - Advise on Payment Timing",
+        "description": "Workflow for intent - Advise on Payment Timing",
+        "workflowId": "4adc5005-d3dd-4753-a504-3580fc95fe6d"
+      },
+      "transitions": [
+        {
+          "_id": "303d60a2-7d39-42b8-9a49-5b8cef6e3b10-a5014a0c-3fd2-4995-8c59-95d0be563862",
+          "name": "Mini agent execution completed",
+          "nextTask": "a5014a0c-3fd2-4995-8c59-95d0be563862"
+        }
+      ]
+    },
+    {
+      "_id": "c525a5ad-f16b-401e-9dd5-9c246ab587ef",
+      "transitions": [
+        {
+          "_id": "c525a5ad-f16b-401e-9dd5-9c246ab587ef-883ff001-dbd5-4271-9eda-fe687c060b89",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "883ff001-dbd5-4271-9eda-fe687c060b89"
+        }
+      ],
+      "type": "Output",
+      "config": {
+        "name": "Output",
+        "description": "Output the response to the user",
+        "type": "external",
+        "text": "Unable to complete task $agent.query"
+      }
+    },
+    {
+      "_id": "ac0a0a21-631f-4c92-8232-2e76656bf02f",
+      "transitions": [
+        {
+          "_id": "ac0a0a21-631f-4c92-8232-2e76656bf02f-883ff001-dbd5-4271-9eda-fe687c060b89",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "883ff001-dbd5-4271-9eda-fe687c060b89"
+        }
+      ],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "$input.content"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

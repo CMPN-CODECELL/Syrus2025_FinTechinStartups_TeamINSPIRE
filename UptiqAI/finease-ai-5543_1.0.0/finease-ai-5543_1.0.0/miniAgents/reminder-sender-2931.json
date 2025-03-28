@@ -1,0 +1,29 @@
+{
+  "_id": "ab31f8e0-0598-407e-961b-511fd7e5d937",
+  "aiPersonaId": "68477062-6637-4338-946b-731946563ad0",
+  "integrationId": "reminder-sender-2931",
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "intents": [
+    {
+      "_id": "send-payment-reminder-2932",
+      "name": "Send Payment Reminder",
+      "description": "Sends email reminders to users about overdue payments.",
+      "examples": [
+        "Send a reminder for overdue invoice 123.",
+        "Email a payment reminder to the client.",
+        "Notify users about overdue payments.",
+        "Send a thankyou mail or message for paid clients",
+        "Send a message or mails to clients"
+      ],
+      "flowType": "Workflow",
+      "workflowId": "6a0a837d-c01a-4ca5-b6ab-742b2590edf2"
+    }
+  ],
+  "name": "Reminder Sender",
+  "primaryWorkflowId": "f969e2b8-7143-465f-bc26-82139efbcefa",
+  "publisherAccountId": "6a852086-e073-4065-8345-aff4b98d9ac1",
+  "scope": "Sends payment reminders via email to a group of users for overdue invoices.",
+  "status": "Active"
+}
