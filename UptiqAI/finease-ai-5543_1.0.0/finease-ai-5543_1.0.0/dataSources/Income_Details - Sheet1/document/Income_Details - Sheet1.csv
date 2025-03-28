@@ -1,7 +1,0 @@
-Transaction_ID,Client_Name,Amount,Paid_Date,Contact_Email,Contact_Phone
-TRN105,JKL Enterprises,18000,2025-04-01,2022.ganesh.shelar@ves.ac.in,+915432109876
-TRN109,STU Pvt. Ltd,12000,2025-04-15,stu_pvt@email.com,+911098765432
-TRN113,Gamma Solutions,22500,2025-04-05,gamma_solutions@email.com,+919334455667
-TRN116,Zeta Group,18500,2025-04-15,zeta_group@email.com,+919667788990
-TRN123,Nu Pvt. Ltd,24500,2025-04-02,nu_pvt@email.com,+919434455667
-TRN130,Upsilon Corp,27500,2025-04-01,upsilon_corp@email.com,+919101122334
