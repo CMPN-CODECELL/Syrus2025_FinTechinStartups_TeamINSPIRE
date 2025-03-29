@@ -70,8 +70,6 @@ Develop specialized subagents to handle specific financial tasks.
 - **Overdue Payment Detector:** Monitors invoice due dates, identifies overdue payments, and flags them.
 - **Reminder Sender:** Sends payment reminders via email (and other channels) with escalation logic.
 - **Cash Flow Analyzer:** Tracks income and expenses and generates cash flow insights.
-- **Payment Strategy Recommender:** Suggests optimal payment schedules based on financial health.
-- **Supplier Payment Automator:** Automates supplier payments using Razorpay, PayPal, or Stripe.
 
 **Configuration:**  
 For each subagent, navigate to Agent Studio → Create New Subagent → Input the name, description, and assign responsibilities → Choose GPT-4 → Save.
@@ -97,7 +95,8 @@ Enable the Invoice Manager to automatically generate invoices based on financial
 
 4. **Testing:**  
    Create sample transactions and verify that invoices are generated automatically and stored correctly.
-   ![Intent Diagram Diagram](images/image12.png)
+
+![Intent Diagram Diagram](images/image12.png)
 
 
 ### Phase 4: Overdue Detection Implementation
@@ -147,7 +146,5 @@ Enable the Invoice Manager to automatically generate invoices based on financial
 - **Accounting Integrations:** QuickBooks, Xero, Zoho Books.
 
 ---
-
-
 
 # Made with ❤️ by Team INSPIRE
