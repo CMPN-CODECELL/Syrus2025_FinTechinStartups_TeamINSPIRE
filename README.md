@@ -5,6 +5,8 @@
 
 [Click here for Detailed CookBook](https://docs.google.com/document/d/1RhQwJh2QUuCay4XJHj5Ikxv_0KUC-otH1cIRfd6ZkrA/edit?usp=sharing) 
 
+[Click here for Detailed CookBook](https://youtu.be/uTIHtUJe8ek?si=74zsqRvp2ipaCqKi) 
+
 ---
 
 ## Table of Contents
